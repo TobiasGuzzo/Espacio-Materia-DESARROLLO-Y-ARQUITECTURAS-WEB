@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobias Guzzo - Suscripción al Diario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css">
+</head>
+<body>
+    <header class="cabecera py-3 mb-4">
+        <div class="container">
+            <h1>Tobias Guzzo</h1>
+        </div>
+    </header>
+    
+    <main class="container mb-5">
+        <h2 id="titulo-hola" class="text-center mb-4">HOLA</h2>
+        <form id="registro" class="row g-3 shadow p-4 rounded bg-light">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre y Apellido">
+                <div id="errornombre" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="correo" class="form-label">Email</label>
+                <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+                <div id="errorcorreo" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="clave" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="clave">
+                <div id="errorclave" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="repetir" class="form-label">Repetir contraseña</label>
+                <input type="password" class="form-control" id="repetir">
+                <div id="errorrepetir" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad">
+                <div id="erroredad" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono">
+                <div id="errortelefono" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion">
+                <div id="errordireccion" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="ciudad" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad">
+                <div id="errorciudad" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="postal" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="postal">
+                <div id="errorpostal" class="error"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="text" class="form-control" id="dni">
+                <div id="errordni" class="error"></div>
+            </div>
+            <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn boton px-5">Enviar</button>
+            </div>
+        </form>
+    </main>
+    
+    <footer>
+        <div class="columna-footer">
+            <div class="footer-izq">
+                <h3 class="titulo-footer">Contacto</h3>
+                <p>Francisco Romero 3200 - Tobias Guzzo</p>
+                <p>
+                    <a href="https://facebook.com" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fi fi-brands-tik-tok"></i></a>
+                </p>
+            </div>
+            <div class="footer-der">
+                <h3 class="titulo-footer">Redes Sociales</h3>
+                <p>Sígueme en mis redes sociales</p>
+                <p>
+                    <a href="https://facebook.com" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fi fi-brands-tik-tok"></i></a>
+                </p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Tobias Guzzo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        var registro = document.getElementById('registro');
+        var nombre = document.getElementById('nombre');
+        var correo = document.getElementById('correo');
+        var clave = document.getElementById('clave');
+        var repetir = document.getElementById('repetir');
+        var edad = document.getElementById('edad');
+        var telefono = document.getElementById('telefono');
+        var direccion = document.getElementById('direccion');
+        var ciudad = document.getElementById('ciudad');
+        var postal = document.getElementById('postal');
+        var dni = document.getElementById('dni');
+
+        nombre.onblur = function() {
+            if (nombre.value.length <= 6 || nombre.value.indexOf(' ') == -1) {
+                document.getElementById('errornombre').innerText = "Debe tener mas de 6 letras y un espacio";
+            }
+        }
+        nombre.onfocus = function() {
+            document.getElementById('errornombre').innerText = "";
+            document.getElementById('titulo-hola').innerText = "HOLA " + nombre.value.toUpperCase();
+        }
+        nombre.onkeydown = function() {
+            // Usamos setTimeout muy corto para que tome el valor de la tecla que se acaba de presionar
+            setTimeout(function() {
+                document.getElementById('titulo-hola').innerText = "HOLA " + nombre.value.toUpperCase();
+            }, 10);
+        }
+
+        correo.onblur = function() {
+            // Expresión regular básica para validar el formato del email
+            var formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (formatoEmail.test(correo.value) == false) {
+                document.getElementById('errorcorreo').innerText = "Error: Email invalido";
+            }
+        }
+        correo.onfocus = function() {
+            document.getElementById('errorcorreo').innerText = "";
+        }
+
+        clave.onblur = function() {
+            var tieneNumero = /[0-9]/.test(clave.value);
+            var tieneLetra = /[a-zA-Z]/.test(clave.value);
+            
+            if (clave.value.length < 8 || tieneNumero == false || tieneLetra == false) {
+                document.getElementById('errorclave').innerText = "Minimo 8 caracteres, letras y numeros";
+            }
+        }
+        clave.onfocus = function() {
+            document.getElementById('errorclave').innerText = "";
+        }
+
+        repetir.onblur = function() {
+            if (repetir.value != clave.value) {
+                document.getElementById('errorrepetir').innerText = "Error: No coincide";
+            }
+        }
+        repetir.onfocus = function() {
+            document.getElementById('errorrepetir').innerText = "";
+        }
+
+        edad.onblur = function() {
+            if (edad.value < 18 || edad.value % 1 != 0) {
+                document.getElementById('erroredad').innerText = "Error: Numero entero mayor o igual a 18";
+            }
+        }
+        edad.onfocus = function() {
+            document.getElementById('erroredad').innerText = "";
+        }
+
+        telefono.onblur = function() {
+            var tel = telefono.value;
+            if (tel.length < 7 || isNaN(tel) || tel.indexOf(' ') != -1 || tel.indexOf('-') != -1 || tel.indexOf('(') != -1 || tel.indexOf(')') != -1) {
+                document.getElementById('errortelefono').innerText = "Error: Minimo 7 numeros sin espacios, guiones ni parentesis";
+            }
+        }
+        telefono.onfocus = function() {
+            document.getElementById('errortelefono').innerText = "";
+        }
+
+        direccion.onblur = function() {
+            var tieneNumero = /[0-9]/.test(direccion.value);
+            var tieneLetra = /[a-zA-Z]/.test(direccion.value);
+            
+            if (direccion.value.length < 5 || direccion.value.indexOf(' ') == -1 || tieneNumero == false || tieneLetra == false) {
+                document.getElementById('errordireccion').innerText = "Error: Minimo 5 caracteres, letras, numeros y un espacio";
+            }
+        }
+        direccion.onfocus = function() {
+            document.getElementById('errordireccion').innerText = "";
+        }
+
+        ciudad.onblur = function() {
+            if (ciudad.value.length < 3) {
+                document.getElementById('errorciudad').innerText = "Error: Minimo 3 letras";
+            }
+        }
+        ciudad.onfocus = function() {
+            document.getElementById('errorciudad').innerText = "";
+        }
+
+        postal.onblur = function() {
+            if (postal.value.length < 3) {
+                document.getElementById('errorpostal').innerText = "Error: Minimo 3 caracteres";
+            }
+        }
+        postal.onfocus = function() {
+            document.getElementById('errorpostal').innerText = "";
+        }
+
+        dni.onblur = function() {
+            if (dni.value.length < 7 || dni.value.length > 8 || isNaN(dni.value)) {
+                document.getElementById('errordni').innerText = "Error: 7 u 8 numeros";
+            }
+        }
+        dni.onfocus = function() {
+            document.getElementById('errordni').innerText = "";
+        }
+
+        registro.onsubmit = function(e) {
+            e.preventDefault();
+            
+            nombre.onblur();
+            correo.onblur();
+            clave.onblur();
+            repetir.onblur();
+            edad.onblur();
+            telefono.onblur();
+            direccion.onblur();
+            ciudad.onblur();
+            postal.onblur();
+            dni.onblur();
+
+            var msj = "";
+            
+            if (document.getElementById('errornombre').innerText != "") {
+                msj = msj + document.getElementById('errornombre').innerText + "\n";
+            }
+            if (document.getElementById('errorcorreo').innerText != "") {
+                msj = msj + document.getElementById('errorcorreo').innerText + "\n";
+            }
+            if (document.getElementById('errorclave').innerText != "") {
+                msj = msj + document.getElementById('errorclave').innerText + "\n";
+            }
+            if (document.getElementById('errorrepetir').innerText != "") {
+                msj = msj + document.getElementById('errorrepetir').innerText + "\n";
+            }
+            if (document.getElementById('erroredad').innerText != "") {
+                msj = msj + document.getElementById('erroredad').innerText + "\n";
+            }
+            if (document.getElementById('errortelefono').innerText != "") {
+                msj = msj + document.getElementById('errortelefono').innerText + "\n";
+            }
+            if (document.getElementById('errordireccion').innerText != "") {
+                msj = msj + document.getElementById('errordireccion').innerText + "\n";
+            }
+            if (document.getElementById('errorciudad').innerText != "") {
+                msj = msj + document.getElementById('errorciudad').innerText + "\n";
+            }
+            if (document.getElementById('errorpostal').innerText != "") {
+                msj = msj + document.getElementById('errorpostal').innerText + "\n";
+            }
+            if (document.getElementById('errordni').innerText != "") {
+                msj = msj + document.getElementById('errordni').innerText + "\n";
+            }
+
+            if (msj != "") {
+                alert("Tenes errores:\n" + msj);
+            } else {
+                alert("Informacion enviada:\n" + 
+                      "Nombre: " + nombre.value + "\n" +
+                      "Email: " + correo.value + "\n" +
+                      "Clave: " + clave.value + "\n" +
+                      "Edad: " + edad.value + "\n" +
+                      "Telefono: " + telefono.value + "\n" +
+                      "Direccion: " + direccion.value + "\n" +
+                      "Ciudad: " + ciudad.value + "\n" +
+                      "Codigo Postal: " + postal.value + "\n" +
+                      "DNI: " + dni.value);
+            }
+        }
+    </script>
+</body>
+</html>
