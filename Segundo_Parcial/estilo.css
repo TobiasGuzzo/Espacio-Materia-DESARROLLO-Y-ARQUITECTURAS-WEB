@@ -1,0 +1,69 @@
+body {
+  font-family: sans-serif;
+  background-color: #e5e7eb;
+  padding: 30px;
+}
+
+#caja {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 380px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: gray;
+}
+
+
+label {
+  font-weight: bold;
+}
+
+select, input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 48%;
+  padding: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#calc {
+  background-color: #0000ff;
+  color: white;
+  border: none;
+}
+
+#limp {
+  background-color: #cccccc;
+  color: black;
+  border: 1px solid gray;
+}
+
+#res {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e6f7ff;
+  border: 1px dashed blue;
+}
+
+#res h3 {
+  margin-top: 0;
+  color: blue;
+}

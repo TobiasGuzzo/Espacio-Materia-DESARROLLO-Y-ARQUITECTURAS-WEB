@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Segundo Parcial - Tobias Guzzo</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <div id="caja">
+    <h1>Calculadora Solar </h1>
+    <h2>Por Tobias Guzzo</h2>
+    <br>
+
+    <form id="formulario">
+      <div>
+        <label>Qué desea calcular?</label><br>
+        <select id="tipo">
+          <option value="campo">Tamaño del campo solar</option>
+          <option value="tejado">Superficie de tejado necesaria</option>
+        </select>
+      </div>
+      <br>
+
+      <div>
+        <label>Consumo anual (kWh):</label><br>
+        <input type="number" id="con" required min="1">
+      </div>
+      <br>
+
+      <div>
+        <label>Porcentaje de compensación (%):</label><br>
+        <input type="number" id="com" required min="1" max="100">
+      </div>
+      <br>
+
+      <div>
+        <label>Factor medioambiental (%):</label><br>
+        <input type="number" id="fac" required min="1" max="100">
+      </div>
+      <br>
+
+      <div>
+        <label>Horas solares por día:</label><br>
+        <input type="number" id="hor" required min="1" max="24">
+      </div>
+      <br>
+
+      <div id="extra" style="display: none;">
+        <div>
+          <label>Potencia por panel (kW):</label><br>
+          <input type="number" id="pot" step="0.01" min="0.01">
+        </div>
+        <br>
+
+        <div>
+          <label>Superficie por panel (m²):</label><br>
+          <input type="number" id="sup" step="0.01" min="0.01">
+        </div>
+        <br>
+      </div>
+
+      <div>
+        <button type="submit" id="calc">Calcular</button>
+        <button type="button" id="limp">Limpiar</button>
+      </div>
+    </form>
+
+    <div id="res" style="display: none;">
+      <h3 id="res-tit"></h3>
+      <p id="res-txt"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
